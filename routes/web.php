@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\SocialAccountController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('login/{provider}', [SocialAccountController::class, 'redirectToProvider'])->name('login.provider');
+Route::get('login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');
