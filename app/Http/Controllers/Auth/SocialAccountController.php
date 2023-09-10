@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\SocialAccount;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class SocialAccountController extends Controller
 {
@@ -19,6 +21,7 @@ class SocialAccountController extends Controller
             $user = Socialite::driver($provider)->user();
             $authUser = $this->findOrCreateUser($user, $provider);
             Auth::login($authUser, true);
+            return redirect('/');
         }catch(\Exception $e){
 
             return redirect()->route('login');
@@ -29,16 +32,28 @@ class SocialAccountController extends Controller
 
     private function findOrCreateUser($user, $provider)
     {
-        $authUser = User::where('provider_id', $user->id)->first();
+//        get social account
+        $account = SocialAccount::where('provider_name', $provider)->where('provider_id', $user->id)->first();
+        $authUser = $account->user;
         if($authUser){
             return $authUser;
         }
-
-        return User::create([
-            'name' => $user->name,
-            'email' => $user->email,
+//        get user
+        $current = User::where('email', $user->email)->first();
+//        create user
+        if(! $current){
+            $current = User::create([
+                'name' => $user->name,
+                'email' => $user->email,
+            ]);
+        }
+//        create social account
+        $current->accounts()->create([
             'provider_id' => $user->id,
             'provider_name' => $provider,
         ]);
+
+
+        return $current;
     }
 }
