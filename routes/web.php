@@ -15,16 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[\App\Http\Controllers\IndexController::class, 'index'])->name('index');
 
 Route::get('test', function (){
     return view('test');
 })->name('test');
 
+Route::get('gym', [\App\Http\Controllers\IndexController::class, 'gym'])->name('gym.index');
+
 Route::get('login/{provider}', [SocialAccountController::class, 'redirectToProvider'])->name('login.provider');
 Route::get('login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');
 
 
-Auth::routes();
