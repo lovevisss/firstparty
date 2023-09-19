@@ -1,0 +1,92 @@
+.main{
+    background-image: url('../img/bg2.jpg') ;
+    width: 100%;
+    height: 100%;
+    margin-top: 2rem;
+}
+
+.circle {
+    /*width: 40rem;*/
+    /*height: 40rem;*/
+    padding: 2rem;
+    border-radius: 50%; /* 将边框半径设置为50%，使元素呈现圆形 */
+    background-color: white; /* 设置背景颜色，这里使用红色作为示例 */
+}
+
+.circle::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 50%;
+    animation: ripple 2s ease-out infinite;
+}
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+@keyframes ripple {
+    0% {
+        opacity: 0;
+        width: 200px;
+        height: 200px;
+    }
+    80% {
+        opacity: 0.25;
+    }
+    100% {
+        width: 400px;
+        height: 400px;
+        opacity: 0;
+    }
+}
+
+.foot{
+    background-color: #f0f0f0;
+    opacity: 0.4;
+}
+
+/*.rectangle {*/
+/*    background-color: #f00;*/
+/*    transform: scale3d(1,2,1); !* 调整倾斜角度 *!*/
+/*    background-clip: content-box; !* 保持内容区域不被裁剪 *!*/
+/*    padding: 0 20px; !* 调整内边距以保持文字显示 *!*/
+/*}*/
+/*#clock {*/
+/*    padding: 4rem;*/
+/*}*/
+
+.pad-4{
+    padding: 6rem;
+}
+
+.col-2 a{
+    color: black;
+}
+
+a{
+    color: white;
+}
+
+li{
+    list-style: none;
+}
+
+#footer{
+    background-color: #a84044;
+    opacity: 0.5;
+}
+
+
