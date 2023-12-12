@@ -28,6 +28,11 @@ Route::get('/backend', [App\Http\Controllers\IndexController::class, 'back'])->n
 
 Route::post('sub', [App\Http\Controllers\IndexController::class, 'sub'])->name('sub');
 
+
+Route::get('pusher', function(){
+    return view('pusher.index');
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

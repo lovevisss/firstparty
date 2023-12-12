@@ -29,11 +29,10 @@
             <div class="col-sm  text-center circle" >
                 <div class="row d-flex align-items-center justify-content-lg-center pt-4"><img src="../img/Logo.png" width="70rem" style="padding-bottom:1rem"></div>
                 <h4 >浙江财经大学东方学院</h4><hr>
-                <h2 >体育中心</h2>
+                <h2 >体育中心1</h2>
             </div>
 
             <div class="col-sm h2 d-flex align-items-center text-white font-weight-bold pl-5 pr-0" >
-
                 生命不息，运动不止
             </div>
         </div>

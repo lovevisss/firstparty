@@ -17,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('auth:api')->group(function(){
+    
+    // Route::get('posts/{post}/comments', 'CommentsController@index');
+    // Route::post('posts/{post}/comments', 'CommentsController@store');
+    
+
+});
+
+Route::resource('lessons', App\Http\Controllers\LessonController::class);
